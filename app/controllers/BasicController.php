@@ -36,7 +36,7 @@ class BasicController extends \BaseController {
 		if($validator->fails())
 		{
 			return Response::json([
-					'message' => 'Mail id entered is already exists',
+					'message' => 'Mail id entered already exists',
 					'status_code' => 401
 			],401);
 		}
