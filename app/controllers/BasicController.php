@@ -61,8 +61,8 @@ class BasicController extends \BaseController {
 	{
 
 	    $userdata = array(
-                'patient_mail' => Request::get('mail'),
-                'password' => Request::get('password')
+                'patient_mail' => Request::get('patient_mail'),
+                'password' => Request::get('patient_password')
                 );
     if(Auth::attempt($userdata))
     {

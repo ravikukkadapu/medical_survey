@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration {
 			$table->string('patient_code',30);
 			$table->string('patient_mail',30);
 			$table->string('patient_mobile',30);
-			$table->string('patient_password',30);
+			$table->string('password',60);
 			$table->string('patient_ip',30);
 			$table->timestamps();
 		});
