@@ -20,8 +20,6 @@ Route::post('/medical/register','BasicController@create');
 
 Route::post('/medical/login','BasicController@Dologin');
 
-Route::get('/medical/view','SaveController@sample');
-
-// Route::post('/medical/diagnostics','SaveController@diagnosticsdata');
+Route::post('/medical/diagnostics','DiagnosticsController@store');
 
 

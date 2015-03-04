@@ -23,7 +23,6 @@ class BasicController extends \BaseController {
 		$pcode = Request::get('patient_code');
 		$pmail = Request::get('patient_mail');
 		$pmobile = Request::get('patient_mobile');
-		// $ppwd = Request::get('patient_password');
 		$ppwd = Hash::make(Request::get('patient_password'));
 		$ip = Request::get('patient_ip');
 
