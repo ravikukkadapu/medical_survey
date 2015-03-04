@@ -22,5 +22,7 @@ Route::post('/medical/login','BasicController@Dologin');
 
 Route::post('/medical/diagnostics','DiagnosticsController@store');
 
+Route::post('/medical/nutritiondaily','NutritionController@daily');
+
 Route::post('/medical/nutritionweekly','NutritionController@weekly');
 
