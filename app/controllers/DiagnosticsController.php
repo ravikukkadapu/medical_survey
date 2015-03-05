@@ -32,26 +32,30 @@ class DiagnosticsController extends \BaseController {
 	public function store()
 	{
 		$patientcode = Request::get('patient_code');
-		$bpvalue = Request::get('bp_value');
-		$bpchkdate = Request::get('bpcheck_date');
-		$bptype = Request::get('bp_type');
 		$heartbeatvalue = Request::get('heartbeat_value');
 		$heartbeatchkdate = Request::get('heartbeatcheck_date');
-		$sugarlevelvalue = Request::get('sugarlevel_value');
-		$sugarlevelchkdate = Request::get('sugarlevelcheck_date');
-		$sugarleveltype = Request::get('sugarlevel_type');
+		$bpvalue = Request::get('bp_value');
+		$bpchkdate = Request::get('bpcheck_date');
+		$fastingvalue = Request::get('bloodsugar_fasting');
+		$randomvalue = Request::get('bloodsugar_random');
+		$postlunchvalue = Request::get('bloodsugar_postlunch');
+		$bloodsugarchkdate = Request::get('bloodsugarcheck_date');
 		$ip = Request::get('patient_ip');
+		$bpvalue = explode("/", $bpvalue);
+		$cy=$bpvalue[0];
+		$dy=$bpvalue[1];
 
 		$dia = new Diagnostics;
-		$dia->patient_code=$patientcode;
-		$dia->bp_value=$bpvalue;
-		$dia->bpcheck_date = $bpchkdate;
-		$dia->bp_type = $bptype;
+		$dia->patient_code = $patientcode;
 		$dia->heartbeat_value = $heartbeatvalue;
 		$dia->heartbeatcheck_date = $heartbeatchkdate;
-		$dia->sugarlevel_value = $sugarlevelvalue;
-		$dia->sugarlevelcheck_date = $sugarlevelchkdate;
-		$dia->sugarlevel_type = $sugarleveltype;
+		$dia->bpcystolic_value = $bpvalue[0];
+		$dia->bpdystolic_value = $bpvalue[1];
+		$dia->bpcheck_date = $bpchkdate;
+		$dia->bloodsugar_fasting = $fastingvalue;
+		$dia->bloodsugar_random = $randomvalue;
+		$dia->bloodsugar_postlunch = $postlunchvalue;
+		$dia->bloodsugarcheck_date = $bloodsugarchkdate;
 		$dia->patient_ip = $ip;
 		$dia->save();
 

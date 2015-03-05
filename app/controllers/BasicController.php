@@ -63,11 +63,14 @@ class BasicController extends \BaseController {
                 'patient_mail' => Request::get('patient_mail'),
                 'password' => Request::get('patient_password')
                 );
+	    $code = Request::get('patient_mail');
+	    $qry = "select patient_code from users where patient_mail = '$code'";
+	    $data =DB::select($qry);
     if(Auth::attempt($userdata))
     {
 		return Response::json([
-				'message' => 'Welcome to Login Page.',
-				'status_code' => 200
+				'status_code' => 200,
+				'patient_code' =>$data
 		],200);
     }
     else
@@ -75,6 +78,7 @@ class BasicController extends \BaseController {
     	return Response::json([
 				'message' => 'Incorrect email/password.',
 				'status_code' => 401
+
 		],401);
     }
 }
