@@ -17,7 +17,7 @@ class CreateDiagnosticsTable extends Migration {
 			$table->increments('id');
 			$table->string('patient_code',30);
 			$table->string('heartbeat_value',10);
-			$table->string('heartbeatcheck_date',10);
+			$table->datetime('heartbeatcheck_date',10);
 			$table->string('bpcystolic_value',10);
 			$table->string('bpdystolic_value',10);
 			$table->string('bpcheck_date',10);
