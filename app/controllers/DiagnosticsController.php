@@ -44,7 +44,7 @@ class DiagnosticsController extends \BaseController {
 		$bpvalue = explode("/", $bpvalue);
 		$cy=$bpvalue[0];
 		$dy=$bpvalue[1];
-
+return $bpchkdate;
 		$dia = new Diagnostics;
 		$dia->patient_code = $patientcode;
 		$dia->heartbeat_value = $heartbeatvalue;

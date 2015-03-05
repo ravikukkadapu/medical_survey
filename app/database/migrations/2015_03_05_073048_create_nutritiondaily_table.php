@@ -30,8 +30,8 @@ class CreateNutritiondailyTable extends Migration {
 			$table->string('fridaydiet_type',5);
 			$table->string('saturday_diet',30);
 			$table->string('saturdaydiet_type',5);
-			$table->string('veg_serves',20);
-			$table->string('nonveg_serves',20);
+			$table->string('veg_serves',5);
+			$table->string('nonveg_serves',5);
 			$table->string('patient_ip',30);
 			$table->timestamps();
 		});
