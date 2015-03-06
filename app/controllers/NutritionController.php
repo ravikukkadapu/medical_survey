@@ -61,7 +61,7 @@ class NutritionController extends \BaseController {
 		$nud->thursday_diet = $thursdaydiet;
 		$nud->thursdaydiet_type = $thursdaydiettype;
 		$nud->friday_diet = $fridaydiet;
-		$nud->thursdaydiet_type = $fridaydiettype;
+		$nud->fridaydiet_type = $fridaydiettype;
 		$nud->saturday_diet = $saturdaydiet;
 		$nud->saturdaydiet_type = $saturdaydiettype;
 		$nud->veg_serves = $vegserves;
