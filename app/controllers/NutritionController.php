@@ -70,8 +70,8 @@ class NutritionController extends \BaseController {
 		$nud->save();
 
 		return Response::json([
-				'message' => 'Nutrition Daily data Added.',
-				'status_code' => 200
+				'message' => 'Nutrition Daily data Added successfully.',
+				'status_code' => 200,
 			],200);
 	}
 
