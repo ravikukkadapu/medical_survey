@@ -61,8 +61,7 @@ class DiagnosticsController extends \BaseController {
 
 			return Response::json([
 					'message' => 'Patient Diagnostics data Added.',
-					'status_code' => 200,
-					'value' =>$bpchkdate
+					'status_code' => 200
 			],200);
 	}
 
