@@ -41,16 +41,12 @@ class DiagnosticsController extends \BaseController {
 		$postlunchvalue = Request::get('bloodsugar_postlunch');
 		$bloodsugarchkdate = Request::get('bloodsugarcheck_date');
 		$ip = Request::get('patient_ip');
-		$bpvalue = explode("/", $bpvalue);
-		$cy=$bpvalue[0];
-		$dy=$bpvalue[1];
 
 		$dia = new Diagnostics;
 		$dia->patient_code = $patientcode;
 		$dia->heartbeat_value = $heartbeatvalue;
 		$dia->heartbeatcheck_date = $heartbeatchkdate;
-		$dia->bpcystolic_value = $bpvalue[0];
-		$dia->bpdystolic_value = $bpvalue[1];
+		$dia->bp_value = $bpvalue;
 		$dia->bpcheck_date = $bpchkdate;
 		$dia->bloodsugar_fasting = $fastingvalue;
 		$dia->bloodsugar_random = $randomvalue;
