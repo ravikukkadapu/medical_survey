@@ -11,12 +11,18 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
 
-Route::post('/medical/register','BasicController@create');
+
+    // Route::get('/medical/register','BasicController@view');
+
+    Route::post('/medical/register',
+        [
+           'as' => 'doregister',
+           'uses' =>'BasicController@create'
+        ]);
+
+
+// Route::post('/medical/register','BasicController@create');
 
 Route::post('/medical/login','BasicController@Dologin');
 

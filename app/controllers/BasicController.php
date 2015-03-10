@@ -2,28 +2,23 @@
 
 class BasicController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+
+	public function view()
 	{
-		//
+		return View::make('register');
 	}
 
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
 		$pcode = Request::get('patient_code');
 		$pmail = Request::get('patient_mail');
 		$pmobile = Request::get('patient_mobile');
 		$ppwd = Hash::make(Request::get('patient_password'));
+		$surveytype = Request::get('surveytype');
+		$address = Request::get('address');
+		$zipcode = Request::get('zipcode');
+		$latitude = Request::get('latitude');
+		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
 
 		$rules = array(
@@ -42,11 +37,16 @@ class BasicController extends \BaseController {
 		else
 		{
 			$pat = new Patient;
-			$pat->patient_code=$pcode;
-			$pat->patient_mail=$pmail;
-			$pat->patient_mobile=$pmobile;
-			$pat->password=$ppwd;
-			$pat->patient_ip=$ip;
+			$pat->patient_code = $pcode;
+			$pat->patient_mail = $pmail;
+			$pat->patient_mobile = $pmobile;
+			$pat->password = $ppwd;
+			$pat->surveytype = $surveytype;
+			$pat->address = $address;
+			$pat->zipcode = $zipcode;
+			$pat->latitude = $latitude;
+			$pat->longitude = $longitude;
+			$pat->patient_ip = $ip;
 			$pat->save();
 			return Response::json([
 					'message' => 'Patient data Added.',

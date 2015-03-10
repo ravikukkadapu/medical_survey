@@ -19,6 +19,11 @@ class CreateUsersTable extends Migration {
 			$table->string('patient_mail',30);
 			$table->string('patient_mobile',30);
 			$table->string('password',60);
+			$table->string('surveytype',30);
+			$table->string('address',30);
+			$table->string('zipcode',10);
+			$table->string('latitude',30);
+			$table->string('longitude',30);
 			$table->string('patient_ip',30);
 			$table->timestamps();
 		});
