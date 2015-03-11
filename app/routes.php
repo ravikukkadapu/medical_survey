@@ -5,15 +5,15 @@
     Route::post('/medical/register',
         [
            'as' => 'doregister',
-           'uses' =>'BasicController@create'
+           'uses' =>'BasicController@patientsave'
         ]);
 
-    // Route::get('/medical/doctorregister','BasicController@doctor');
+    Route::get('/medical/doctorregister','BasicController@doctor');
 
     Route::post('/medical/doctorregister',
         [
            'as' => 'doc_register',
-           'uses' =>'BasicController@doctorcreate'
+           'uses' =>'BasicController@doctorsave'
         ]);
 
 

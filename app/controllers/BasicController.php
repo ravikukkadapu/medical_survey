@@ -8,12 +8,12 @@ class BasicController extends \BaseController {
 	// 	return View::make('register');
 	// }
 
-	// public function doctor()
-	// {
-	// 	return View::make('doctorregister');
-	// }
+	public function doctor()
+	{
+		return View::make('doctorregister');
+	}
 
-	Public function doctorcreate()
+	Public function doctorsave()
 	{
 		$name = Request::get('doctor_name');
 		$mail = Request::get('mail');
@@ -30,7 +30,7 @@ class BasicController extends \BaseController {
 
 	}
 
-	public function create()
+	public function patientsave()
 	{
 		$pcode = Request::get('patient_code');
 		$pmail = Request::get('patient_mail');
@@ -103,7 +103,6 @@ class BasicController extends \BaseController {
 		],401);
     }
 }
-
 
 	public function doctorlogin()
 	{

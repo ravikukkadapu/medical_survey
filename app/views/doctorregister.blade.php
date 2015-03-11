@@ -4,8 +4,8 @@
 </head>
 <body><center>
 <h2>MEDICAL SURVEY</h2></center>
-<!-- <form action ="{{URL::route('doregister')}}" method='post'> -->
-<form>
+<form action ="{{URL::route('doc_register')}}" method='post'>
+{{-- <form> --}}
 <fieldset>
 <legend> Doctor Registration</legend>
 <div class="row">
@@ -19,12 +19,12 @@
     <tr>
         <td>MAIL:</td>
         <td></td>
-        <td><input type="text" name="doctor_mail" id="doctor_mail" placeholder="Enter Mail"></td>
+        <td><input type="text" name="mail" id="mail" placeholder="Enter Mail"></td>
     </tr>
     <tr>
         <td>PASSWORD:</td>
         <td></td>
-        <td><input type="password" name="doc_password" id="doc_password" placeholder="Enter password"></td>
+        <td><input type="password" name="password" id="password" placeholder="Enter password"></td>
     </tr>
     <tr>
         <td>CONFIRM PASSWORD:</td>
