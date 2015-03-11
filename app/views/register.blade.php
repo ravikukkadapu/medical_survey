@@ -4,10 +4,10 @@
 </head>
 <body><center>
 <h2>MEDICAL SURVEY</h2></center>
-{{-- <form action ="{{URL::route('doregister')}}" method='post'> --}}
+<form action ="{{URL::route('doregister')}}" method='post'>
 <form>
 <fieldset>
-<legend> Registration Page</legend>
+<legend>Patient Registration</legend>
 <div class="row">
 <div class="small-4 medium-centered columns">
     <table align='center'>

@@ -1,6 +1,6 @@
 <?php
 
-    Route::get('/medical/register','BasicController@view');
+    // Route::get('/medical/register','BasicController@view');
 
     Route::post('/medical/register',
         [
@@ -8,9 +8,18 @@
            'uses' =>'BasicController@create'
         ]);
 
-// Route::post('/medical/register','BasicController@create');
+    // Route::get('/medical/doctorregister','BasicController@doctor');
 
-Route::post('/medical/login','BasicController@Dologin');
+    Route::post('/medical/doctorregister',
+        [
+           'as' => 'doc_register',
+           'uses' =>'BasicController@doctorcreate'
+        ]);
+
+
+Route::post('/medical/login','BasicController@patientlogin');
+
+Route::post('/medical/doctorlogin','BasicController@doctorlogin');
 
 Route::post('/medical/diagnostics','DiagnosticsController@store');
 

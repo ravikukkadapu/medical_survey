@@ -3,9 +3,31 @@
 class BasicController extends \BaseController {
 
 
-	public function view()
+	// public function view()
+	// {
+	// 	return View::make('register');
+	// }
+
+	// public function doctor()
+	// {
+	// 	return View::make('doctorregister');
+	// }
+
+	Public function doctorcreate()
 	{
-		return View::make('register');
+		$name = Request::get('doctor_name');
+		$mail = Request::get('mail');
+		$pwd = Request::get('password');
+		$doc = new Doctor;
+		$doc->doctor_name = $name;
+		$doc->mail = $mail;
+		$doc->password = $pwd;
+		$doc->save();
+			return Response::json([
+					'message' => 'Doctor data Added.',
+					'status_code' => 200
+			],200);
+
 	}
 
 	public function create()
@@ -56,9 +78,8 @@ class BasicController extends \BaseController {
 
 	}
 
-	public function Dologin()
+	public function patientlogin()
 	{
-
 	    $userdata = array(
                 'patient_mail' => Request::get('patient_mail'),
                 'password' => Request::get('patient_password')
@@ -84,53 +105,28 @@ class BasicController extends \BaseController {
 }
 
 
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+	public function doctorlogin()
 	{
-		//
-	}
+		$mail = Request::get('mail');
+		$pwd = Request::get('password');
+		$qry = "select doctor_name from doctor where mail = '$mail' and password='$pwd'";
+		$data =DB::select($qry);
 
+		if($data==null)
+		{
+			return Response::json([
+					'message' => 'Incorrect email/password.',
+					'status_code' => 401
+			],401);
+		}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		else
+		{
+			return Response::json([
+					'status_code' => 200,
+					'doctor_name' =>$data
+			],200);
+		}
 	}
 
 
