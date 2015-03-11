@@ -16,6 +16,8 @@ class CreateNutritiondailyTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('patient_code',30);
+			$table->string('fromdate',30);
+			$table->string('todate',30);
 			$table->string('sunday_diet',30);
 			$table->string('sundaydiet_type',30);
 			$table->string('monday_diet',30);
@@ -32,6 +34,8 @@ class CreateNutritiondailyTable extends Migration {
 			$table->string('saturdaydiet_type',30);
 			$table->string('veg_serves',30);
 			$table->string('nonveg_serves',30);
+			$table->string('latitude',30);
+			$table->string('longitude',30);
 			$table->string('patient_ip',30);
 			$table->timestamps();
 		});

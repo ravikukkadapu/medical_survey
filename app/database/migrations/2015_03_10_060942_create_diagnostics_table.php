@@ -24,6 +24,8 @@ class CreateDiagnosticsTable extends Migration {
 			$table->string('bloodsugar_random',30);
 			$table->string('bloodsugar_postlunch',30);
 			$table->string('bloodsugarcheck_date',30);
+			$table->string('latitude',30);
+			$table->string('longitude',30);
 			$table->string('patient_ip',30);
 			$table->timestamps();
 		});

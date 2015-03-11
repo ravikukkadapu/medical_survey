@@ -40,6 +40,8 @@ class DiagnosticsController extends \BaseController {
 		$randomvalue = Request::get('bloodsugar_random');
 		$postlunchvalue = Request::get('bloodsugar_postlunch');
 		$bloodsugarchkdate = Request::get('bloodsugarcheck_date');
+		$latitude = Request::get('latitude');
+		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
 
 		$dia = new Diagnostics;
@@ -52,6 +54,8 @@ class DiagnosticsController extends \BaseController {
 		$dia->bloodsugar_random = $randomvalue;
 		$dia->bloodsugar_postlunch = $postlunchvalue;
 		$dia->bloodsugarcheck_date = $bloodsugarchkdate;
+		$dia->latitude = $latitude;
+		$dia->longitude = $longitude;
 		$dia->patient_ip = $ip;
 		$dia->save();
 
