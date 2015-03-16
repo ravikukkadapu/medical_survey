@@ -18,7 +18,8 @@ class CreateDiagnosticsTable extends Migration {
 			$table->string('patient_code',30);
 			$table->string('heartbeat_value',30);
 			$table->string('heartbeatcheck_date',30);
-			$table->string('bp_value',30);
+			$table->string('bpsystolic_value',30);
+			$table->string('bpdiastolic_value',30);
 			$table->string('bpcheck_date',30);
 			$table->string('bloodsugar_fasting',30);
 			$table->string('bloodsugar_random',30);

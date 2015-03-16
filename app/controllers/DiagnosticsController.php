@@ -35,6 +35,8 @@ class DiagnosticsController extends \BaseController {
 		$heartbeatvalue = Request::get('heartbeat_value');
 		$heartbeatchkdate = Request::get('heartbeatcheck_date');
 		$bpvalue = Request::get('bp_value');
+		// $bpsystolicvalue = Request::get('bpsystolic_value');
+		// $bpdiastolicvalue = Request::get('bpdiastolic_value');
 		$bpchkdate = Request::get('bpcheck_date');
 		$fastingvalue = Request::get('bloodsugar_fasting');
 		$randomvalue = Request::get('bloodsugar_random');
@@ -44,11 +46,16 @@ class DiagnosticsController extends \BaseController {
 		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
 
+		$val = explode('/',$bpvalue);
+		$bpsystolicvalue = $val[0];
+		$bpdiastolicvalue = $val[1];
+
 		$dia = new Diagnostics;
 		$dia->patient_code = $patientcode;
 		$dia->heartbeat_value = $heartbeatvalue;
 		$dia->heartbeatcheck_date = $heartbeatchkdate;
-		$dia->bp_value = $bpvalue;
+		$dia->bpsystolic_value = $bpsystolicvalue;
+		$dia->bpdiastolic_value = $bpdiastolicvalue;
 		$dia->bpcheck_date = $bpchkdate;
 		$dia->bloodsugar_fasting = $fastingvalue;
 		$dia->bloodsugar_random = $randomvalue;
