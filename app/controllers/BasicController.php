@@ -175,7 +175,7 @@ class BasicController extends \BaseController {
     $minslp = Request::get('minslp');
     $maxslp = Request::get('maxslp');
     $addr = Request::get('address');
-    $query = "select patient_code,latitude,longitude from diagnostics";
+    $query = "select patient_code,latitude,longitude from vw_search1";
     $query_length = strlen($query);
 
     if($minhb != '' and $maxhb != '')
@@ -243,17 +243,21 @@ class BasicController extends \BaseController {
         }
     }
 
-    // if($addr != '')
-    // {
-    //     if(strlen($query) > $query_length)
-    //     {
-    //         $query .= "AND address = '$addr' ";
-    //     }
-    // }
+    if($addr != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= "AND address = '$addr' ";
+        }
+    }
 
 // return $query;
         $result = DB::select($query);
-        return $result;
+        // return $result;
+        return Response::json([
+					'data' =>$result,
+					'status_code' => 200
+			],200);
     }
 }
 

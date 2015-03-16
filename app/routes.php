@@ -2,11 +2,11 @@
 
 // Route::get('/medical/register','BasicController@view');
 
-// Route::post('/medical/register',
-// [
-//     'as' => 'doregister',
-//     'uses' =>'BasicController@patientsave'
-// ]);
+Route::post('/medical/register',
+[
+    'as' => 'doregister',
+    'uses' =>'BasicController@patientsave'
+]);
 
 Route::get('/medical/doctorregister','BasicController@doctor');
 
