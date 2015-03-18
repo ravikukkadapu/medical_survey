@@ -45,10 +45,18 @@ class DiagnosticsController extends \BaseController {
 		$latitude = Request::get('latitude');
 		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
-
+if($bpvalue ==null)
+{
+		$bpsystolicvalue ='';
+		$bpdiastolicvalue = '';
+}
+else
+{
 		$val = explode('/',$bpvalue);
 		$bpsystolicvalue = $val[0];
 		$bpdiastolicvalue = $val[1];
+}
+
 
 		$dia = new Diagnostics;
 		$dia->patient_code = $patientcode;
