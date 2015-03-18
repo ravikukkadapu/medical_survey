@@ -14,12 +14,14 @@
 @foreach($data as $dat)
     <tr>
         <td align='center'>{{$dat->code}}</td>
+        <td align='center'>
+            <a href="{{$dat->image}}">
+                <img src="{{$dat->image}}" >
+            </a>
+        </td>
     </tr>
-        <a href="{{$dat->image}}">
-            <img src="{{$dat->image}}" >
-        </a>
 @endforeach
-</table>
+    </table>
 
 </form>
 </body>

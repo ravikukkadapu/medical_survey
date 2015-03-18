@@ -1,6 +1,6 @@
 <?php
 
-// Route::get('/medical/register','BasicController@view');
+// Route::get('/medical/register','BasicController@patient');
 
 Route::post('/medical/register',
 [
@@ -31,26 +31,14 @@ Route::post('/medical/nutritionmonthly','NutritionController@monthly');
 
 Route::post('/medical/nutritionquarterly','NutritionController@quarterly');
 
-// Route::get('/medical/search','BasicController@search');
+Route::get('/medical/search','SearchController@search');
 
 Route::post('/medical/search',
 [
         'as' => 'post_search',
-        'uses' =>'BasicController@searchpage'
+        'uses' =>'SearchController@searchpage'
 ]);
 
-// Route::get('/test','HomeController@imagepage');
+Route::post('/medical/patientlogout','BasicController@patientlogout');
 
-// Route::post('/sample','HomeController@image');
-
-// Route::get('/testexample',
-// [
-//     'as'=>'testexample',
-//     'uses'=>'HomeController@samplechk'
-// ]);
-
-// Route::post('/testexample',
-// [
-//     'as'=>'sam',
-//     'uses'=>'HomeController@samplechkpage'
-// ]);
+Route::post('/medical/doctorlogout','BasicController@doctorlogout');

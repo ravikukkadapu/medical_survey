@@ -5,8 +5,8 @@
 <body><center>
 <h2>MEDICAL SURVEY</h2></center>
 <form action ="{{URL::route('post_search')}}" method='post'>
-{{-- <fieldset>
-<legend> search</legend> --}}
+
+
 <div class="row">
 <div class="small-4 medium-centered columns">
     <table align='center'>
@@ -46,6 +46,11 @@
     <tr>
         <td>address:</td>
         <td><input type="text" name="address" id="address"></td>
+    </tr>
+    <tr>
+        <td>Diet:</td>
+        <td>Veg : <INPUT TYPE="checkbox" name="veg" id='veg'></td>
+        <td>Non-Veg :<INPUT TYPE="checkbox" name="nonveg" id='nonveg'></td>
     </tr>
     <tr>
         <td></td>

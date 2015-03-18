@@ -2,7 +2,7 @@
 
 class BasicController extends \BaseController {
 
-	// public function view()
+	// public function patient()
 	// {
 	// 	return View::make('register');
 	// }
@@ -127,137 +127,21 @@ class BasicController extends \BaseController {
 		}
 	}
 
-		public function search()
-		{
-			return View::make('search');
-		}
-
-		// public function searchpage()
-		// {
-		// $minhb = Request::get('minhb');
-		// $maxhb = Request::get('maxhb');
-
-		// // $query = "select patient_code,latitude,longitude from med_sample WHERE heartbeat_value BETWEEN $minhb and $maxhb ";
-
-		// $query = "select patient_code,latitude,longitude from diagnostics WHERE heartbeat_value BETWEEN $minhb and $maxhb ";
-
-		// $result = DB::select($query);
-		// if($result==null)
-		// {
-		// 	return Response::json([
-		// 			'message' => 'No data for this search',
-		// 			'status_code' => 200
-		// 	],200);
-		// }
-		// else
-		// {
-		// 	return Response::json([
-		// 			'data' => $result,
-		// 			'status_code' => 200
-		// 	],200);
-		// }
-
-		// }
-
-
-	public function searchpage()
+        public function patientlogout()
     {
-    $minsystolic = Request::get('minsystolic');
-    $maxsystolic = Request::get('maxsystolic');
-    $mindiastolic = Request::get('mindiastolic');
-    $maxdiastolic = Request::get('maxdiastolic');
-    $minhb = Request::get('minhb');
-    $maxhb = Request::get('maxhb');
-    $minslf = Request::get('minslf');
-    $maxslf = Request::get('maxslf');
-    $minslr = Request::get('minslr');
-    $maxslr = Request::get('maxslr');
-    $minslp = Request::get('minslp');
-    $maxslp = Request::get('maxslp');
-    $addr = Request::get('address');
-    $query = "select patient_code,latitude,longitude from vw_search1";
-    $query_length = strlen($query);
-
-    if($minhb != '' and $maxhb != '')
-    {
-        $query .= " WHERE heartbeat_value BETWEEN $minhb and $maxhb ";
-    }
-
-    if($minsystolic != '' and $maxsystolic != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND bpsystolic_value BETWEEN $minsystolic and $maxsystolic ";
-        }
-        else
-        {
-            $query .= " WHERE bpsystolic_value BETWEEN $minsystolic and $maxsystolic ";
-        }
-    }
-
-    if($mindiastolic != '' and $maxdiastolic != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND bpdiastolic_value BETWEEN $mindiastolic and $maxdiastolic";
-        }
-        else
-        {
-            $query .= " WHERE bpdiastolic_value BETWEEN $mindiastolic and $maxdiastolic ";
-        }
-    }
-
-    if($minslf != '' and $maxslf != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND bloodsugar_fasting BETWEEN $minslf and $maxslf ";
-        }
-        else
-        {
-            $query .= " WHERE bloodsugar_fasting BETWEEN $minslf and $maxslf ";
-        }
-    }
-
-    if($minslr != '' and $maxslr != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND bloodsugar_random BETWEEN $minslr and $maxslr ";
-        }
-        else
-        {
-	        $query .= " WHERE bloodsugar_random BETWEEN $minslr and $maxslr ";
-        }
-    }
-
-    if($minslp != '' and $maxslp != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND bloodsugar_postlunch BETWEEN $minslp and $maxslp ";
-        }
-        else
-        {
-           $query .= " WHERE bloodsugar_postlunch BETWEEN $minslp and $maxslp ";
-        }
-    }
-
-    if($addr != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= "AND address = '$addr' ";
-        }
-    }
-
-// return $query;
-        $result = DB::select($query);
-        // return $result;
+        Auth::logout();
         return Response::json([
-					'data' =>$result,
-					'status_code' => 200
-			],200);
+                'message' =>' logout successfully',
+                'status_code' => 200
+        ],200);
+    }
+
+        public function doctorlogout()
+    {
+        return Response::json([
+                'message' =>' logout successfully',
+                'status_code' => 200
+        ],200);
     }
 }
 
