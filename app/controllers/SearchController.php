@@ -10,8 +10,8 @@ class SearchController extends \BaseController
 	public function searchpage()
     {
     $pcode = Request::get('code');
-    // $fromdate = Request::get('fromdate');
-    // $todate = Request::get('todate');
+    $fromdate = Request::get('fromdate');
+    $todate = Request::get('todate');
     $minsystolic = Request::get('minsystolic');
     $maxsystolic = Request::get('maxsystolic');
     $mindiastolic = Request::get('mindiastolic');
@@ -37,6 +37,19 @@ class SearchController extends \BaseController
     {
         $query .= " WHERE patient_code = $pcode ";
     }
+
+    // if($fromdate != '' AND $todate != '')
+    // {
+    //     if(strlen($query) > $query_length)
+    //     {
+    //     $query .= " AND heartbeatcheck_date BETWEEN '$fromdate' AND '$todate'";
+    //     }
+    //     else
+    //     {
+    //     $query .= " WHERE heartbeatcheck_date BETWEEN '$fromdate' AND '$todate' ";
+    //     }
+    // }
+
 
     if($minhb != '' AND $maxhb != '')
     {
