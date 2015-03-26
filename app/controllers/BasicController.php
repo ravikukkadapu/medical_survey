@@ -127,16 +127,16 @@ class BasicController extends \BaseController {
 		}
 	}
 
-        public function patientlogout()
+    public function patientlogout()
     {
-        Auth::logout();
+        // Auth::logout();
         return Response::json([
                 'message' =>' logout successfully',
                 'status_code' => 200
         ],200);
     }
 
-        public function doctorlogout()
+    public function doctorlogout()
     {
         return Response::json([
                 'message' =>' logout successfully',

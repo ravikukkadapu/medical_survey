@@ -47,6 +47,7 @@
         <td>address:</td>
         <td><input type="text" name="address" id="address"></td>
     </tr>
+
     <tr>
         <td>Diet:</td>
         <td>Veg : <INPUT TYPE="checkbox" name="veg" id='veg'></td>

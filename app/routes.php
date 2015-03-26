@@ -31,7 +31,7 @@ Route::post('/medical/nutritionmonthly','NutritionController@monthly');
 
 Route::post('/medical/nutritionquarterly','NutritionController@quarterly');
 
-Route::get('/medical/search','SearchController@search');
+// Route::get('/medical/search','SearchController@search');
 
 Route::post('/medical/search',
 [

@@ -1,8 +1,7 @@
 <?php
 
-class SearchController extends \BaseController {
-
-
+class SearchController extends \BaseController
+{
 	public function search()
 	{
 		return View::make('search');
@@ -10,6 +9,9 @@ class SearchController extends \BaseController {
 
 	public function searchpage()
     {
+    $pcode = Request::get('code');
+    // $fromdate = Request::get('fromdate');
+    // $todate = Request::get('todate');
     $minsystolic = Request::get('minsystolic');
     $maxsystolic = Request::get('maxsystolic');
     $mindiastolic = Request::get('mindiastolic');
@@ -23,74 +25,89 @@ class SearchController extends \BaseController {
     $minslp = Request::get('minslp');
     $maxslp = Request::get('maxslp');
     $addr = Request::get('address');
+    $diettype = Request::get('diet_type');
     $veg=Request::get('veg');
     $nonveg=Request::get('nonveg');
-    $query = "select patient_code,latitude,longitude from vw_searchdaily";
+    // $query = "SELECT patient_code,latitude,longitude FROM vw_searchdaily";
+    $query = "SELECT * FROM vw_searchdaily";
 
     $query_length = strlen($query);
 
-    if($minhb != '' and $maxhb != '')
+    if($pcode != '')
     {
-        $query .= " WHERE heartbeat_value BETWEEN $minhb and $maxhb ";
+        $query .= " WHERE patient_code = $pcode ";
     }
 
-    if($minsystolic != '' and $maxsystolic != '')
+    if($minhb != '' AND $maxhb != '')
     {
         if(strlen($query) > $query_length)
         {
-            $query .= " AND bpsystolic_value BETWEEN $minsystolic and $maxsystolic ";
+        $query .= " AND heartbeat_value BETWEEN $minhb AND $maxhb ";
         }
         else
         {
-            $query .= " WHERE bpsystolic_value BETWEEN $minsystolic and $maxsystolic ";
+        $query .= " WHERE heartbeat_value BETWEEN $minhb AND $maxhb ";
         }
     }
 
-    if($mindiastolic != '' and $maxdiastolic != '')
+
+    if($minsystolic != '' AND $maxsystolic != '')
     {
         if(strlen($query) > $query_length)
         {
-            $query .= " AND bpdiastolic_value BETWEEN $mindiastolic and $maxdiastolic";
+            $query .= " AND bpsystolic_value BETWEEN $minsystolic AND $maxsystolic ";
         }
         else
         {
-            $query .= " WHERE bpdiastolic_value BETWEEN $mindiastolic and $maxdiastolic ";
+            $query .= " WHERE bpsystolic_value BETWEEN $minsystolic AND $maxsystolic ";
         }
     }
 
-    if($minslf != '' and $maxslf != '')
+    if($mindiastolic != '' AND $maxdiastolic != '')
     {
         if(strlen($query) > $query_length)
         {
-            $query .= " AND bloodsugar_fasting BETWEEN $minslf and $maxslf ";
+            $query .= " AND bpdiastolic_value BETWEEN $mindiastolic AND $maxdiastolic ";
         }
         else
         {
-            $query .= " WHERE bloodsugar_fasting BETWEEN $minslf and $maxslf ";
+            $query .= " WHERE bpdiastolic_value BETWEEN $mindiastolic AND $maxdiastolic ";
         }
     }
 
-    if($minslr != '' and $maxslr != '')
+    if($minslf != '' AND $maxslf != '')
     {
         if(strlen($query) > $query_length)
         {
-            $query .= " AND bloodsugar_random BETWEEN $minslr and $maxslr ";
+            $query .= " AND bloodsugar_fasting BETWEEN $minslf AND $maxslf ";
         }
         else
         {
-	        $query .= " WHERE bloodsugar_random BETWEEN $minslr and $maxslr ";
+            $query .= " WHERE bloodsugar_fasting BETWEEN $minslf AND $maxslf ";
         }
     }
 
-    if($minslp != '' and $maxslp != '')
+    if($minslr != '' AND $maxslr != '')
     {
         if(strlen($query) > $query_length)
         {
-            $query .= " AND bloodsugar_postlunch BETWEEN $minslp and $maxslp ";
+            $query .= " AND bloodsugar_random BETWEEN $minslr AND $maxslr ";
         }
         else
         {
-           $query .= " WHERE bloodsugar_postlunch BETWEEN $minslp and $maxslp ";
+	        $query .= " WHERE bloodsugar_random BETWEEN $minslr AND $maxslr ";
+        }
+    }
+
+    if($minslp != '' AND $maxslp != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bloodsugar_postlunch BETWEEN $minslp AND $maxslp ";
+        }
+        else
+        {
+           $query .= " WHERE bloodsugar_postlunch BETWEEN $minslp AND $maxslp ";
         }
     }
 
@@ -106,7 +123,7 @@ class SearchController extends \BaseController {
         }
     }
 
-    if($veg == 'on' and $nonveg == null)
+    if($veg == 'on' AND $nonveg == null )
         {
             if(strlen($query) > $query_length)
             {
@@ -118,7 +135,7 @@ class SearchController extends \BaseController {
             }
         }
 
-    if($veg == null and $nonveg == 'on')
+    if( $veg == null AND $nonveg == 'on')
         {
             if(strlen($query) > $query_length)
             {
@@ -130,7 +147,7 @@ class SearchController extends \BaseController {
             }
         }
 
-    if($veg == 'on' and $nonveg == 'on')
+    if($veg == 'on' AND $nonveg == 'on')
         {
             if(strlen($query) > $query_length)
             {
@@ -141,6 +158,162 @@ class SearchController extends \BaseController {
                 $query .= " WHERE veg_serves >=3 AND nonveg_serves >=3 ";
             }
         }
+
+
+    // if($diettype == 1)
+    // {
+    // if($veg == 'on' AND $nonveg == null )
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND fastveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE fastveg_serves >=3 ";
+    //         }
+    //     }
+
+    // if( $veg == null AND $nonveg == 'on')
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND fastnonveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE fastnonveg_serves >=3 ";
+    //         }
+    //     }
+
+    // if($veg == 'on' AND $nonveg == 'on')
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND fastveg_serves >=3 AND fastnonveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE fastveg_serves >=3 AND fastnonveg_serves >=3 ";
+    //         }
+    //     }
+    // }
+    // if($diettype == 2)
+    // {
+    // if($veg == 'on' AND $nonveg == null )
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND weekveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE weekveg_serves >=3 ";
+    //         }
+    //     }
+
+    // if( $veg == null AND $nonveg == 'on')
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND weeknonveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE weeknonveg_serves >=3 ";
+    //         }
+    //     }
+
+    // if($veg == 'on' AND $nonveg == 'on')
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND weekveg_serves >=3 AND weeknonveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE weekveg_serves >=3 AND weeknonveg_serves >=3 ";
+    //         }
+    //     }
+    // }
+    // if($diettype == 3)
+    // {
+    // if($veg == 'on' AND $nonveg == null )
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND monthveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE monthveg_serves >=3 ";
+    //         }
+    //     }
+
+    // if( $veg == null AND $nonveg == 'on')
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND monthnonveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE monthnonveg_serves >=3 ";
+    //         }
+    //     }
+
+    // if($veg == 'on' AND $nonveg == 'on')
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND monthveg_serves >=3 AND monthnonveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE monthveg_serves >=3 AND monthnonveg_serves >=3 ";
+    //         }
+    //     }
+    // }
+    // if($diettype == 4)
+    // {
+    // if($veg == 'on' AND $nonveg == null )
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND quarterveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE quarterveg_serves >=3 ";
+    //         }
+    //     }
+
+    // if( $veg == null AND $nonveg == 'on')
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND quarternonveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE quarternonveg_serves >=3 ";
+    //         }
+    //     }
+
+    // if($veg == 'on' AND $nonveg == 'on')
+    //     {
+    //         if(strlen($query) > $query_length)
+    //         {
+    //             $query .= " AND quarterveg_serves >=3 AND quarternonveg_serves >=3 ";
+    //         }
+    //         else
+    //         {
+    //             $query .= " WHERE quarterveg_serves >=3 AND quarternonveg_serves >=3 ";
+    //         }
+    //     }
+    // }
+    // return $query;
+
 
     $result = DB::select($query);
     return Response::json([

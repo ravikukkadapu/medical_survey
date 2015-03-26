@@ -2,38 +2,13 @@
 
 class DiagnosticsController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
 
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
 		$patientcode = Request::get('patient_code');
 		$heartbeatvalue = Request::get('heartbeat_value');
 		$heartbeatchkdate = Request::get('heartbeatcheck_date');
+		// $from =  Date('Y-m-d H:i:s ',$heartbeatchkdate);
 		$bpvalue = Request::get('bp_value');
 		// $bpsystolicvalue = Request::get('bpsystolic_value');
 		// $bpdiastolicvalue = Request::get('bpdiastolic_value');
@@ -45,23 +20,23 @@ class DiagnosticsController extends \BaseController {
 		$latitude = Request::get('latitude');
 		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
-if($bpvalue ==null)
-{
-		$bpsystolicvalue ='';
-		$bpdiastolicvalue = '';
-}
-else
-{
-		$val = explode('/',$bpvalue);
-		$bpsystolicvalue = $val[0];
-		$bpdiastolicvalue = $val[1];
-}
-
+		if($bpvalue ==null)
+		{
+			$bpsystolicvalue ='';
+			$bpdiastolicvalue = '';
+		}
+		else
+		{
+			$val = explode('/',$bpvalue);
+			$bpsystolicvalue = $val[0];
+			$bpdiastolicvalue = $val[1];
+		}
 
 		$dia = new Diagnostics;
 		$dia->patient_code = $patientcode;
 		$dia->heartbeat_value = $heartbeatvalue;
-		$dia->heartbeatcheck_date = $heartbeatchkdate;
+		$dia->heartbeatcheck_date = $heartbeatcheckdate;
+		// $dia->heartbeatcheck_date = $from;
 		$dia->bpsystolic_value = $bpsystolicvalue;
 		$dia->bpdiastolic_value = $bpdiastolicvalue;
 		$dia->bpcheck_date = $bpchkdate;
@@ -74,59 +49,12 @@ else
 		$dia->patient_ip = $ip;
 		$dia->save();
 
-			return Response::json([
-					'message' => 'Patient Diagnostics data Added.',
-					'status_code' => 200
+		return Response::json([
+				'message' => 'Patient Diagnostics data Added.',
+				'status_code' => 200
 			],200);
 	}
 
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
 
 
 }
