@@ -92,68 +92,15 @@ class NutritionController extends \BaseController
 	}
 
 
-	// public function monthly()
-	// {
-	// 	$patientcode = Request::get('patient_code');
-	// 	$monthname = Request::get('month_name');
-	// 	$dietveg1 = Request::get('diet_veg1');
-	// 	$dietnonveg1 = Request::get('diet_nonveg1');
-	// 	$nonvegserves1 = Request::get('nonveg_serves1');
-	// 	$vegserves1 = Request::get('veg_serves1');
-	// 	$dietveg2 = Request::get('diet_veg2');
-	// 	$dietnonveg2 = Request::get('diet_nonveg2');
-	// 	$nonvegserves2 = Request::get('nonveg_serves2');
-	// 	$vegserves2 = Request::get('veg_serves2');
-	// 	$dietveg3 = Request::get('diet_veg3');
-	// 	$dietnonveg3 = Request::get('diet_nonveg3');
-	// 	$nonvegserves3 = Request::get('nonveg_serves3');
-	// 	$vegserves3 = Request::get('veg_serves3');
-	// 	$dietveg4 = Request::get('diet_veg4');
-	// 	$dietnonveg4 = Request::get('diet_nonveg4');
-	// 	$nonvegserves4 = Request::get('nonveg_serves4');
-	// 	$vegserves4 = Request::get('veg_serves4');
-	// 	$latitude = Request::get('latitude');
-	// 	$longitude = Request::get('longitude');
-	// 	$ip = Request::get('patient_ip');
-
-	// 	$num = new NutritionMonthly;
-	// 	$num->patient_code = $patientcode;
-	// 	$num->month_name = $monthname;
-	// 	$num->diet_veg1 = $dietveg1;
-	// 	$num->diet_nonveg1 = $dietnonveg1;
-	// 	$num->nonveg_serves1 = $nonvegserves1;
-	// 	$num->veg_serves1 = $vegserves1;
-	// 	$num->diet_veg2 = $dietveg2;
-	// 	$num->diet_nonveg2 = $dietnonveg2;
-	// 	$num->nonveg_serves2 = $nonvegserves2;
-	// 	$num->veg_serves2 = $vegserves2;
-	// 	$num->diet_veg3 = $dietveg3;
-	// 	$num->diet_nonveg3 = $dietnonveg3;
-	// 	$num->nonveg_serves3 = $nonvegserves3;
-	// 	$num->veg_serves3 = $vegserves3;
-	// 	$num->diet_veg4 = $dietveg4;
-	// 	$num->diet_nonveg4 = $dietnonveg4;
-	// 	$num->nonveg_serves4 = $nonvegserves4;
-	// 	$num->veg_serves4 = $vegserves4;
-	// 	$num->latitude = $latitude;
-	// 	$num->longitude = $longitude;
-	// 	$num->patient_ip = $ip;
-	// 	$num->save();
-
-	// 	return Response::json([
-	// 		'message' => 'Nutrition Monthly data Added.',
-	// 		'status_code' => 200
-	// 		],200);
-	// }
 
 	public function monthly()
 	{
 		$patientcode = Request::get('patient_code');
 		$monthname = Request::get('month_name');
-		$dietveg1 = Request::get('diet_veg1');
-		$dietnonveg1 = Request::get('diet_nonveg1');
-		$nonvegserves1 = Request::get('nonveg_serves1');
-		$vegserves1 = Request::get('veg_serves1');
+		$dietveg = Request::get('diet_veg');
+		$dietnonveg = Request::get('diet_nonveg');
+		$nonvegserves = Request::get('nonveg_serves');
+		$vegserves = Request::get('veg_serves');
 		$latitude = Request::get('latitude');
 		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
@@ -178,37 +125,32 @@ class NutritionController extends \BaseController
 
 	public function quarterly()
 	{
+
 		$patientcode = Request::get('patient_code');
-        $quarter1 = Request::get('quarter1');
-        $nonvegserves1 = Request::get('nonveg_serves1');
-        $vegserves1 = Request::get('veg_serves1');
-        $quarter2 = Request::get('quarter2');
-        $nonvegserves2 = Request::get('nonveg_serves2');
-        $vegserves2 = Request::get('veg_serves2');
-        $quarter3 = Request::get('quarter3');
-        $nonvegserves3 = Request::get('nonveg_serves3');
-        $vegserves3 = Request::get('veg_serves3');
-        $quarter4 = Request::get('quarter4');
-        $nonvegserves4 = Request::get('nonveg_serves4');
-        $vegserves4 = Request::get('veg_serves4');
+		$year = Request::get('year');
+        $quarter1 = Request::get('serve_type1');
+        $diettype1 = Request::get('diet_type1');
+        $quarter2 = Request::get('serve_type2');
+        $diettype2 = Request::get('diet_type2');
+        $quarter3 = Request::get('serve_type3');
+        $diettype3 = Request::get('diet_type3');
+        $quarter4 = Request::get('serve_type4');
+        $diettype4 = Request::get('diet_type4');
 		$latitude = Request::get('latitude');
 		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
 
 		$nuq = new NutritionQuarterly;
 		$nuq->patient_code = $patientcode;
-        $nuq->quarter1 = $quarter1;
-        $nuq->nonveg_serves1 = $nonvegserves1;
-        $nuq->veg_serves1 = $vegserves1;
-        $nuq->quarter2 = $quarter2;
-        $nuq->nonveg_serves2 = $nonvegserves2;
-        $nuq->veg_serves2 = $vegserves2;
-        $nuq->quarter3 = $quarter2;
-        $nuq->nonveg_serves3 = $nonvegserves3;
-        $nuq->veg_serves3 = $vegserves3;
-        $nuq->quarter4 = $quarter4;
-        $nuq->nonveg_serves4 = $nonvegserves4;
-        $nuq->veg_serves4 = $vegserves4;
+		$nuq->year = $year;
+        $nuq->serve_type1 = $quarter1;
+        $nuq->diet_type1 = $diettype1;
+        $nuq->serve_type2 = $quarter2;
+        $nuq->diet_type2 = $diettype2;
+        $nuq->serve_type3 = $quarter3;
+        $nuq->diet_type3 = $diettype3;
+        $nuq->serve_type4 = $quarter4;
+        $nuq->diet_type4 = $diettype4;
 		$nuq->latitude = $latitude;
 		$nuq->longitude = $longitude;
 		$nuq->patient_ip = $ip;
