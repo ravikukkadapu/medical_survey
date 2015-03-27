@@ -51,6 +51,18 @@ class SearchController extends \BaseController
     // }
 
 
+    // if($minhb != '' AND $maxhb != '')
+    // {
+    //     if(strlen($query) > $query_length)
+    //     {
+    //     $query .= " AND heartbeat_value BETWEEN $minhb AND $maxhb AND heartbeatcheck_date BETWEEN '$fromdate' AND '$todate'";
+    //     }
+    //     else
+    //     {
+    //     $query .= " WHERE heartbeat_value BETWEEN $minhb AND $maxhb AND heartbeatcheck_date BETWEEN '$fromdate' AND '$todate'";
+    //     }
+    // }
+
     if($minhb != '' AND $maxhb != '')
     {
         if(strlen($query) > $query_length)
