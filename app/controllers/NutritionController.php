@@ -104,10 +104,15 @@ class NutritionController extends \BaseController
 		$latitude = Request::get('latitude');
 		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
+		$val = explode('-',$monthname);
+		$month = $val[0];
+		$year = $val[1];
+
 
 		$num = new NutritionMonthly;
 		$num->patient_code = $patientcode;
-		$num->month_name = $monthname;
+		$num->month = $val[0];
+		$num->year = $val[1];
 		$num->diet_veg = $dietveg;
 		$num->diet_nonveg = $dietnonveg;
 		$num->nonveg_serves = $nonvegserves;
@@ -162,33 +167,5 @@ class NutritionController extends \BaseController
 			],200);
 	}
 
-	// public function monthly()
-	// {
-	// 	$patientcode = Request::get('patient_code');
-	// 	$monthname = Request::get('month_name');
-	// 	$dietveg = Request::get('diet_veg');
-	// 	$dietnonveg = Request::get('diet_nonveg');
-	// 	$nonvegserves = Request::get('nonveg_serves');
-	// 	$vegserves = Request::get('veg_serves');
-	// 	$latitude = Request::get('latitude');
-	// 	$longitude = Request::get('longitude');
-	// 	$ip = Request::get('patient_ip');
 
-	// 	$num = new NutritionMonthly;
-	// 	$num->patient_code = $patientcode;
-	// 	$num->month_name = $monthname;
-	// 	$num->diet_veg = $dietveg;
-	// 	$num->diet_nonveg = $dietnonveg;
-	// 	$num->nonveg_serves = $nonvegserves;
-	// 	$num->veg_serves = $vegserves;
-	// 	$num->latitude = $latitude;
-	// 	$num->longitude = $longitude;
-	// 	$num->patient_ip = $ip;
-	// 	$num->save();
-
-	// 	return Response::json([
-	// 		'message' => 'Nutrition Monthly data Added.',
-	// 		'status_code' => 200
-	// 		],200);
-	// }
 }
