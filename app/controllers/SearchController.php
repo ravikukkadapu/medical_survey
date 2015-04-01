@@ -524,7 +524,7 @@ else
     {
         return Response::json([
                 'message' =>'No Patient Data found.',
-                'status_code' => 200
+                'status_code' => 201
         ],200);
     }
     else
