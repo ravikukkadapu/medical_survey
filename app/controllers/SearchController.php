@@ -32,17 +32,6 @@ class SearchController extends \BaseController
     $query = "SELECT * FROM vw_searchdaily";
     $query_length = strlen($query);
 
-    if($pcode != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-        $query .= " And patient_code = $pcode ";
-        }
-        else
-        {
-        $query .= " where patient_code = $pcode ";
-        }
-    }
 
     // if($fromdate != '' AND $todate != '')
     // {
@@ -348,11 +337,11 @@ if($fromdate != '' AND $todate != '')
     {
         if(strlen($query) > $query_length)
         {
-        $query .= " And patient_code = $pcode ";
+        $query .= " And patient_code = '$pcode' ";
         }
         else
         {
-        $query .= " where patient_code = $pcode ";
+        $query .= " where patient_code = '$pcode' ";
         }
     }
 
@@ -435,11 +424,11 @@ else
     {
         if(strlen($query) > $query_length)
         {
-        $query .= " And patient_code = $pcode ";
+        $query .= " And patient_code = '$pcode' ";
         }
         else
         {
-        $query .= " where patient_code = $pcode ";
+        $query .= " where patient_code = '$pcode' ";
         }
     }
 
@@ -517,7 +506,7 @@ else
 
 
 }
-    // return $query;
+    return $query;
 
     $result = DB::select($query);
     if($result == null)
