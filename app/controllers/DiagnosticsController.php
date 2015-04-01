@@ -17,6 +17,7 @@ class DiagnosticsController extends \BaseController {
 		$bloodsugarchkdate = Request::get('bloodsugarcheck_date');
 		$latitude = Request::get('latitude');
 		$longitude = Request::get('longitude');
+		$ip = Request::get('patient_ip');
 		$url  = "http://maps.googleapis.com/maps/api/geocode/json?latlng=".
             $latitude.",".$longitude."&sensor=false";
         $json = @file_get_contents($url);
@@ -29,7 +30,6 @@ class DiagnosticsController extends \BaseController {
     	}
 		// return $address;
 
-		$ip = Request::get('patient_ip');
 		if($bpvalue ==null)
 		{
 			$bpsystolicvalue ='';

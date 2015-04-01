@@ -34,7 +34,14 @@ class SearchController extends \BaseController
 
     if($pcode != '')
     {
-        $query .= " WHERE patient_code = $pcode ";
+        if(strlen($query) > $query_length)
+        {
+        $query .= " And patient_code = $pcode ";
+        }
+        else
+        {
+        $query .= " where patient_code = $pcode ";
+        }
     }
 
     // if($fromdate != '' AND $todate != '')
@@ -323,11 +330,30 @@ class SearchController extends \BaseController
     //     }
     // }
 
+    // if($pcode != '')
+    // {
+    //     if(strlen($query) > $query_length)
+    //     {
+    //     $query .= " And patient_code = $pcode ";
+    //     }
+    //     else
+    //     {
+    //     $query .= " where patient_code = $pcode ";
+    //     }
+    // }
+
 if($fromdate != '' AND $todate != '')
 {
     if($pcode != '')
     {
-        $query .= " WHERE patient_code = $pcode AND created_at between '$fromdate' AND '$todate' ";
+        if(strlen($query) > $query_length)
+        {
+        $query .= " And patient_code = $pcode ";
+        }
+        else
+        {
+        $query .= " where patient_code = $pcode ";
+        }
     }
 
     if($minhb != '' AND $maxhb != '')
@@ -407,7 +433,14 @@ else
 {
     if($pcode != '')
     {
-        $query .= " WHERE patient_code = $pcode ";
+        if(strlen($query) > $query_length)
+        {
+        $query .= " And patient_code = $pcode ";
+        }
+        else
+        {
+        $query .= " where patient_code = $pcode ";
+        }
     }
 
     if($minhb != '' AND $maxhb != '')
