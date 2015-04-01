@@ -27,6 +27,17 @@ class NutritionController extends \BaseController
 		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
 
+		$url  = "http://maps.googleapis.com/maps/api/geocode/json?latlng=".
+            $latitude.",".$longitude."&sensor=false";
+        $json = @file_get_contents($url);
+        $data = json_decode($json);
+        $status = $data->status;
+        $address = '';
+		if($status == "OK")
+		{
+			$address = $data->results[0]->formatted_address;
+    	}
+
 		$nud = new NutritionDaily;
 		$nud->patient_code = $patientcode;
 		$nud->fromdate = $fromdate;
@@ -49,6 +60,7 @@ class NutritionController extends \BaseController
 		$nud->nonveg_serves = $nonvegserves;
 		$nud->latitude = $latitude;
 		$nud->longitude = $longitude;
+		$nud->address = $address;
 		$nud->patient_ip = $ip;
 		$nud->save();
 
@@ -72,6 +84,17 @@ class NutritionController extends \BaseController
 		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
 
+		$url  = "http://maps.googleapis.com/maps/api/geocode/json?latlng=".
+            $latitude.",".$longitude."&sensor=false";
+        $json = @file_get_contents($url);
+        $data = json_decode($json);
+        $status = $data->status;
+        $address = '';
+		if($status == "OK")
+		{
+			$address = $data->results[0]->formatted_address;
+    	}
+
 		$nuw = new NutritionWeekly;
 		$nuw->patient_code = $patientcode;
 		$nuw->fromdate = $fromdate;
@@ -82,6 +105,7 @@ class NutritionController extends \BaseController
 		$nuw->veg_serves = $vegserves;
 		$nuw->latitude = $latitude;
 		$nuw->longitude = $longitude;
+		$nuw->address = $address;
 		$nuw->patient_ip = $ip;
 		$nuw->save();
 
@@ -96,7 +120,7 @@ class NutritionController extends \BaseController
 	public function monthly()
 	{
 		$patientcode = Request::get('patient_code');
-		$monthname = Request::get('month_name');
+		$date = Request::get('date');
 		$dietveg = Request::get('diet_veg');
 		$dietnonveg = Request::get('diet_nonveg');
 		$nonvegserves = Request::get('nonveg_serves');
@@ -104,21 +128,28 @@ class NutritionController extends \BaseController
 		$latitude = Request::get('latitude');
 		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
-		$val = explode('-',$monthname);
-		$month = $val[0];
-		$year = $val[1];
+		$url  = "http://maps.googleapis.com/maps/api/geocode/json?latlng=".
+            $latitude.",".$longitude."&sensor=false";
+        $json = @file_get_contents($url);
+        $data = json_decode($json);
+        $status = $data->status;
+        $address = '';
+		if($status == "OK")
+		{
+			$address = $data->results[0]->formatted_address;
+    	}
 
 
 		$num = new NutritionMonthly;
 		$num->patient_code = $patientcode;
-		$num->month = $val[0];
-		$num->year = $val[1];
+		$num->date = $date;
 		$num->diet_veg = $dietveg;
 		$num->diet_nonveg = $dietnonveg;
 		$num->nonveg_serves = $nonvegserves;
 		$num->veg_serves = $vegserves;
 		$num->latitude = $latitude;
 		$num->longitude = $longitude;
+		$num->address = $address;
 		$num->patient_ip = $ip;
 		$num->save();
 
@@ -132,7 +163,7 @@ class NutritionController extends \BaseController
 	{
 
 		$patientcode = Request::get('patient_code');
-		$year = Request::get('year');
+		$date = Request::get('date');
         $quarter1 = Request::get('serve_type1');
         $diettype1 = Request::get('diet_type1');
         $quarter2 = Request::get('serve_type2');
@@ -145,9 +176,20 @@ class NutritionController extends \BaseController
 		$longitude = Request::get('longitude');
 		$ip = Request::get('patient_ip');
 
+$url  = "http://maps.googleapis.com/maps/api/geocode/json?latlng=".
+            $latitude.",".$longitude."&sensor=false";
+        $json = @file_get_contents($url);
+        $data = json_decode($json);
+        $status = $data->status;
+        $address = '';
+		if($status == "OK")
+		{
+			$address = $data->results[0]->formatted_address;
+    	}
+
 		$nuq = new NutritionQuarterly;
 		$nuq->patient_code = $patientcode;
-		$nuq->year = $year;
+		$nuq->date = $date;
         $nuq->serve_type1 = $quarter1;
         $nuq->diet_type1 = $diettype1;
         $nuq->serve_type2 = $quarter2;

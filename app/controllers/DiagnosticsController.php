@@ -17,6 +17,18 @@ class DiagnosticsController extends \BaseController {
 		$bloodsugarchkdate = Request::get('bloodsugarcheck_date');
 		$latitude = Request::get('latitude');
 		$longitude = Request::get('longitude');
+		$url  = "http://maps.googleapis.com/maps/api/geocode/json?latlng=".
+            $latitude.",".$longitude."&sensor=false";
+        $json = @file_get_contents($url);
+        $data = json_decode($json);
+        $status = $data->status;
+        $address = '';
+		if($status == "OK")
+		{
+			$address = $data->results[0]->formatted_address;
+    	}
+		// return $address;
+
 		$ip = Request::get('patient_ip');
 		if($bpvalue ==null)
 		{
@@ -43,6 +55,7 @@ class DiagnosticsController extends \BaseController {
 		$dia->bloodsugarcheck_date = $bloodsugarchkdate;
 		$dia->latitude = $latitude;
 		$dia->longitude = $longitude;
+		$dia->address = $address;
 		$dia->patient_ip = $ip;
 		$dia->save();
 

@@ -6,7 +6,7 @@ class NutritionQuarterly extends Model
 {
     protected $table = 'nutritionquarterly';
     public $primaryKey = 'id';
-    protected $fillable = ['id','patient_code','year','serve_type1','diet_type1','serve_type2','diet_type2','serve_type3','diet_type3','serve_type4','diet_type4','latitude','longitude','patient_ip','timestamps'];
+    protected $fillable = ['id','patient_code','date','serve_type1','diet_type1','serve_type2','diet_type2','serve_type3','diet_type3','serve_type4','diet_type4','latitude','longitude','address','patient_ip','timestamps'];
     public $timestamps = true;
 }
 

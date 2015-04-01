@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNutritionweeklyTable extends Migration {
+class CreateNutritionmonthlyTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,18 +12,18 @@ class CreateNutritionweeklyTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('nutritionweekly', function(Blueprint $table)
+		Schema::create('nutritionmonthly', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('patient_code',30);
-			$table->string('fromdate',30);
-			$table->string('todate',30);
-			$table->string('veg_serves',30);
+			$table->string('date',30);
 			$table->string('diet_veg',30);
-			$table->string('nonveg_serves',30);
 			$table->string('diet_nonveg',30);
+			$table->string('nonveg_serves',30);
+			$table->string('veg_serves',30);
 			$table->string('latitude',30);
 			$table->string('longitude',30);
+			$table->string('address',30);
 			$table->string('patient_ip',30);
 			$table->timestamps();
 		});
@@ -36,7 +36,7 @@ class CreateNutritionweeklyTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('nutritionweekly');
+		Schema::drop('nutritionmonthly');
 	}
 
 }

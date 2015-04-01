@@ -36,6 +36,7 @@ class CreateNutritiondailyTable extends Migration {
 			$table->string('nonveg_serves',30);
 			$table->string('latitude',30);
 			$table->string('longitude',30);
+			$table->string('address',30);
 			$table->string('patient_ip',30);
 			$table->timestamps();
 		});

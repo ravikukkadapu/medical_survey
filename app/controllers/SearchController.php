@@ -30,7 +30,6 @@ class SearchController extends \BaseController
     $nonveg=Request::get('nonveg');
     // $query = "SELECT patient_code,latitude,longitude FROM vw_searchdaily";
     $query = "SELECT * FROM vw_searchdaily";
-
     $query_length = strlen($query);
 
     if($pcode != '')
@@ -50,103 +49,90 @@ class SearchController extends \BaseController
     //     }
     // }
 
-
     // if($minhb != '' AND $maxhb != '')
     // {
     //     if(strlen($query) > $query_length)
     //     {
-    //     $query .= " AND heartbeat_value BETWEEN $minhb AND $maxhb AND heartbeatcheck_date BETWEEN '$fromdate' AND '$todate'";
+    //     $query .= " AND heartbeat_value BETWEEN $minhb AND $maxhb ";
     //     }
     //     else
     //     {
-    //     $query .= " WHERE heartbeat_value BETWEEN $minhb AND $maxhb AND heartbeatcheck_date BETWEEN '$fromdate' AND '$todate'";
+    //     $query .= " WHERE heartbeat_value BETWEEN $minhb AND $maxhb ";
     //     }
     // }
 
-    if($minhb != '' AND $maxhb != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-        $query .= " AND heartbeat_value BETWEEN $minhb AND $maxhb ";
-        }
-        else
-        {
-        $query .= " WHERE heartbeat_value BETWEEN $minhb AND $maxhb ";
-        }
-    }
 
+    // if($minsystolic != '' AND $maxsystolic != '')
+    // {
+    //     if(strlen($query) > $query_length)
+    //     {
+    //         $query .= " AND bpsystolic_value BETWEEN $minsystolic AND $maxsystolic ";
+    //     }
+    //     else
+    //     {
+    //         $query .= " WHERE bpsystolic_value BETWEEN $minsystolic AND $maxsystolic ";
+    //     }
+    // }
 
-    if($minsystolic != '' AND $maxsystolic != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND bpsystolic_value BETWEEN $minsystolic AND $maxsystolic ";
-        }
-        else
-        {
-            $query .= " WHERE bpsystolic_value BETWEEN $minsystolic AND $maxsystolic ";
-        }
-    }
+    // if($mindiastolic != '' AND $maxdiastolic != '')
+    // {
+    //     if(strlen($query) > $query_length)
+    //     {
+    //         $query .= " AND bpdiastolic_value BETWEEN $mindiastolic AND $maxdiastolic ";
+    //     }
+    //     else
+    //     {
+    //         $query .= " WHERE bpdiastolic_value BETWEEN $mindiastolic AND $maxdiastolic ";
+    //     }
+    // }
 
-    if($mindiastolic != '' AND $maxdiastolic != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND bpdiastolic_value BETWEEN $mindiastolic AND $maxdiastolic ";
-        }
-        else
-        {
-            $query .= " WHERE bpdiastolic_value BETWEEN $mindiastolic AND $maxdiastolic ";
-        }
-    }
+    // if($minslf != '' AND $maxslf != '')
+    // {
+    //     if(strlen($query) > $query_length)
+    //     {
+    //         $query .= " AND bloodsugar_fasting BETWEEN $minslf AND $maxslf ";
+    //     }
+    //     else
+    //     {
+    //         $query .= " WHERE bloodsugar_fasting BETWEEN $minslf AND $maxslf ";
+    //     }
+    // }
 
-    if($minslf != '' AND $maxslf != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND bloodsugar_fasting BETWEEN $minslf AND $maxslf ";
-        }
-        else
-        {
-            $query .= " WHERE bloodsugar_fasting BETWEEN $minslf AND $maxslf ";
-        }
-    }
+    // if($minslr != '' AND $maxslr != '')
+    // {
+    //     if(strlen($query) > $query_length)
+    //     {
+    //         $query .= " AND bloodsugar_random BETWEEN $minslr AND $maxslr ";
+    //     }
+    //     else
+    //     {
+	   //      $query .= " WHERE bloodsugar_random BETWEEN $minslr AND $maxslr ";
+    //     }
+    // }
 
-    if($minslr != '' AND $maxslr != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND bloodsugar_random BETWEEN $minslr AND $maxslr ";
-        }
-        else
-        {
-	        $query .= " WHERE bloodsugar_random BETWEEN $minslr AND $maxslr ";
-        }
-    }
+    // if($minslp != '' AND $maxslp != '')
+    // {
+    //     if(strlen($query) > $query_length)
+    //     {
+    //         $query .= " AND bloodsugar_postlunch BETWEEN $minslp AND $maxslp ";
+    //     }
+    //     else
+    //     {
+    //        $query .= " WHERE bloodsugar_postlunch BETWEEN $minslp AND $maxslp ";
+    //     }
+    // }
 
-    if($minslp != '' AND $maxslp != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND bloodsugar_postlunch BETWEEN $minslp AND $maxslp ";
-        }
-        else
-        {
-           $query .= " WHERE bloodsugar_postlunch BETWEEN $minslp AND $maxslp ";
-        }
-    }
-
-    if($addr != '')
-    {
-        if(strlen($query) > $query_length)
-        {
-            $query .= " AND address = '$addr' ";
-        }
-        else
-        {
-        	$query .= " WHERE address = '$addr' ";
-        }
-    }
+    // if($addr != '')
+    // {
+    //     if(strlen($query) > $query_length)
+    //     {
+    //         $query .= " AND address = '$addr' ";
+    //     }
+    //     else
+    //     {
+    //     	$query .= " WHERE address = '$addr' ";
+    //     }
+    // }
 
     if($veg == 'on' AND $nonveg == null )
         {
@@ -183,7 +169,6 @@ class SearchController extends \BaseController
                 $query .= " WHERE veg_serves >=3 AND nonveg_serves >=3 ";
             }
         }
-
 
     // if($diettype == 1)
     // {
@@ -337,16 +322,186 @@ class SearchController extends \BaseController
     //         }
     //     }
     // }
-    // return $query;
 
+if($fromdate != '' AND $todate != '')
+{
+    if($pcode != '')
+    {
+        $query .= " WHERE patient_code = $pcode AND created_at between '$fromdate' AND '$todate' ";
+    }
 
-    $result = DB::select($query);
-    return Response::json([
-				'data' =>$result,
-				'status_code' => 200
-		],200);
+    if($minhb != '' AND $maxhb != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND heartbeat_value BETWEEN $minhb AND $maxhb AND heartbeatcheck_date BETWEEN '$fromdate' AND '$todate'";
+        }
+        else
+        {
+            $query .= " WHERE heartbeat_value BETWEEN $minhb AND $maxhb AND heartbeatcheck_date BETWEEN '$fromdate' AND '$todate'";
+        }
+    }
+
+    if($minsystolic != '' AND $maxsystolic != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bpsystolic_value BETWEEN $minsystolic AND $maxsystolic AND bpcheck_date BETWEEN '$fromdate' AND '$todate'";
+        }
+        else
+        {
+            $query .= " WHERE bpsystolic_value BETWEEN $minsystolic AND $maxsystolic AND bpcheck_date BETWEEN '$fromdate' AND '$todate'";
+        }
+    }
+
+    if($mindiastolic != '' AND $maxdiastolic != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bpdiastolic_value BETWEEN $mindiastolic AND $maxdiastolic AND bpcheck_date BETWEEN '$fromdate' AND '$todate'";
+        }
+        else
+        {
+            $query .= " WHERE bpdiastolic_value BETWEEN $mindiastolic AND $maxdiastolic AND bpcheck_date BETWEEN '$fromdate' AND '$todate'";
+        }
+    }
+
+    if($minslf != '' AND $maxslf != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bloodsugar_fasting BETWEEN $minslf AND $maxslf AND bloodsugarcheck_date BETWEEN '$fromdate' AND '$todate'";
+        }
+        else
+        {
+            $query .= " WHERE bloodsugar_fasting BETWEEN $minslf AND $maxslf AND bloodsugarcheck_date BETWEEN '$fromdate' AND '$todate' ";
+        }
+    }
+
+    if($minslr != '' AND $maxslr != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bloodsugar_random BETWEEN $minslr AND $maxslr AND bloodsugarcheck_date BETWEEN '$fromdate' AND '$todate' ";
+        }
+        else
+        {
+            $query .= " WHERE bloodsugar_random BETWEEN $minslr AND $maxslr AND bloodsugarcheck_date BETWEEN '$fromdate' AND '$todate' ";
+        }
+    }
+
+    if($minslp != '' AND $maxslp != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bloodsugar_postlunch BETWEEN $minslp AND $maxslp AND bloodsugarcheck_date BETWEEN '$fromdate' AND '$todate' ";
+        }
+        else
+        {
+           $query .= " WHERE bloodsugar_postlunch BETWEEN $minslp AND $maxslp AND bloodsugarcheck_date BETWEEN '$fromdate' AND '$todate' ";
+        }
+    }
+}
+
+else
+{
+    if($pcode != '')
+    {
+        $query .= " WHERE patient_code = $pcode ";
+    }
+
+    if($minhb != '' AND $maxhb != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND heartbeat_value BETWEEN $minhb AND $maxhb ";
+        }
+        else
+        {
+            $query .= " WHERE heartbeat_value BETWEEN $minhb AND $maxhb ";
+        }
+    }
+
+    if($minsystolic != '' AND $maxsystolic != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bpsystolic_value BETWEEN $minsystolic AND $maxsystolic ";
+        }
+        else
+        {
+            $query .= " WHERE bpsystolic_value BETWEEN $minsystolic AND $maxsystolic ";
+        }
+    }
+
+    if($mindiastolic != '' AND $maxdiastolic != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bpdiastolic_value BETWEEN $mindiastolic AND $maxdiastolic ";
+        }
+        else
+        {
+            $query .= " WHERE bpdiastolic_value BETWEEN $mindiastolic AND $maxdiastolic ";
+        }
+    }
+
+        if($minslf != '' AND $maxslf != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bloodsugar_fasting BETWEEN $minslf AND $maxslf ";
+        }
+        else
+        {
+            $query .= " WHERE bloodsugar_fasting BETWEEN $minslf AND $maxslf ";
+        }
+    }
+
+    if($minslr != '' AND $maxslr != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bloodsugar_random BETWEEN $minslr AND $maxslr ";
+        }
+        else
+        {
+            $query .= " WHERE bloodsugar_random BETWEEN $minslr AND $maxslr ";
+        }
+    }
+
+    if($minslp != '' AND $maxslp != '')
+    {
+        if(strlen($query) > $query_length)
+        {
+            $query .= " AND bloodsugar_postlunch BETWEEN $minslp AND $maxslp ";
+        }
+        else
+        {
+           $query .= " WHERE bloodsugar_postlunch BETWEEN $minslp AND $maxslp ";
+        }
     }
 
 
+}
+    // return $query;
+
+    $result = DB::select($query);
+    if($result == null)
+    {
+        return Response::json([
+                'message' =>'No Patient Data found.',
+                'status_code' => 200
+        ],200);
+    }
+    else
+    {
+        return Response::json([
+                'data' =>$result,
+                'status_code' => 200
+        ],200);
+    }
+}
 
 }
+

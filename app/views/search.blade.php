@@ -10,7 +10,10 @@
 <div class="row">
 <div class="small-4 medium-centered columns">
     <table align='center'>
-
+    <tr>
+        <td>Patient-code:</td>
+        <td><input type="text" name="code" id="code"></td>
+    </tr>
     <tr>
         <td>hb val:</td>
         <td><input type="text" name="minhb" id="minhb"></td>

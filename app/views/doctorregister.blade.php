@@ -8,8 +8,6 @@
 {{-- <form> --}}
 <fieldset>
 <legend> Doctor Registration</legend>
-<div class="row">
-<div class="small-4 medium-centered columns">
     <table align='center'>
     <tr>
         <td>DOCTOR NAME:</td>
@@ -37,8 +35,6 @@
         <td></td>
     </tr>
 </table>
-</div>
-</div>
 </fieldset>
 </form>
 </body>

@@ -3,9 +3,9 @@
 class HomeController extends BaseController {
 
 	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
+	||----------------------------------------------------------------||
+	||                    Default Home Controller                     ||
+	||----------------------------------------------------------------||
 	|
 	| You may wish to use controllers instead of, or in addition to, Closure
 	| based routes. That's great! Here is an example controller method to
@@ -20,6 +20,11 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
-
+	// public function view()
+	// {
+	// 	$qry = "select * from vw_searchdaily";
+	// 	$res = DB::select($qry);
+	// 	return View::make('dataview',['data'=>$res]);
+	// }
 
 }
