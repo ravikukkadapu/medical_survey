@@ -506,7 +506,7 @@ else
 
 
 }
-    return $query;
+    // return $query;
 
     $result = DB::select($query);
     if($result == null)
