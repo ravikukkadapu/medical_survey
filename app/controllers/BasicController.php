@@ -48,7 +48,7 @@ class BasicController extends \BaseController {
             $doc = new Doctor;
             $doc->doctor_name = $name;
             $doc->mail = $mail;
-            $doc->password = Hash::make(Request::get('password'));
+            $doc->password = $pwd;
             $doc->doctor_mobile = $mobile;
             $doc->specialization = $specialization;
             $doc->address = $address;
@@ -145,7 +145,7 @@ class BasicController extends \BaseController {
 		$pwd = Request::get('password');
 		$qry = "select doctor_name from doctor where mail = '$mail' and password='$pwd'";
 		$data =DB::select($qry);
-
+// return $qry;
 		if($data==null)
 		{
 			return Response::json([
