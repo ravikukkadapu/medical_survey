@@ -17,15 +17,51 @@ class BasicController extends \BaseController {
 		$name = Request::get('doctor_name');
 		$mail = Request::get('mail');
 		$pwd = Request::get('password');
-		$doc = new Doctor;
-		$doc->doctor_name = $name;
-		$doc->mail = $mail;
-		$doc->password = $pwd;
-		$doc->save();
-			return Response::json([
-					'message' => 'Doctor data Added.',
-					'status_code' => 200
-			],200);
+        $cpwd = Request::get('confirm_password');
+        $mobile = Request::get('doctor_mobile');
+        $specialization = Request::get('specialization');
+        $address = Request::get('address');
+
+        $rules = array(
+        'mail'=> 'required|email|unique:doctor',
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+        if($validator->fails())
+        {
+            return Response::json([
+                    'message' => 'Mail id entered already exists',
+                    'status_code' => 401
+            ],401);
+        }
+        else
+        {
+            if($pwd !=$cpwd)
+            {
+            return Response::json([
+                    'message' => 'password mismatch',
+                    'status_code' => 402
+            ],402);
+            }
+            else
+            {
+            $doc = new Doctor;
+            $doc->doctor_name = $name;
+            $doc->mail = $mail;
+            $doc->password = Hash::make(Request::get('password'));
+            $doc->doctor_mobile = $mobile;
+            $doc->specialization = $specialization;
+            $doc->address = $address;
+            $doc->save();
+            return View::make('doctorregister');
+            }
+
+            // return Response::json([
+            //         'message' => 'Doctor data Added.',
+            //         'status_code' => 200
+            // ],200);
+        }
+
 
 	}
 

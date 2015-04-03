@@ -18,6 +18,9 @@ class CreateDoctorTable extends Migration {
 			$table->string('doctor_name',30);
 			$table->string('mail',30);
 			$table->string('password',60);
+			$table->string('doctor_mobile',15);
+			$table->string('specialization',30);
+			$table->string('address',60);
 			$table->timestamps();
 		});
 	}
