@@ -29,19 +29,23 @@ class BasicController extends \BaseController {
         $validator = Validator::make(Input::all(), $rules);
         if($validator->fails())
         {
-            return Response::json([
-                    'message' => 'Mail id entered already exists',
-                    'status_code' => 401
-            ],401);
+            echo "<script>alert('Mail id entered already exists');</script>";
+            return View::make('doctorregister');
+            // return Response::json([
+                    // 'message' => 'Mail id entered already exists',
+                    // 'status_code' => 401
+            // ],401);
         }
         else
         {
             if($pwd !=$cpwd)
             {
-            return Response::json([
-                    'message' => 'password mismatch',
-                    'status_code' => 402
-            ],402);
+            echo "<script>alert('password mismatch');</script>";
+            return View::make('doctorregister');
+            // return Response::json([
+            //         'message' => 'password mismatch',
+            //         'status_code' => 402
+            // ],402);
             }
             else
             {
@@ -53,6 +57,7 @@ class BasicController extends \BaseController {
             $doc->specialization = $specialization;
             $doc->address = $address;
             $doc->save();
+            echo "<script>alert('Doctor Data Added Successfully');</script>";
             return View::make('doctorregister');
             }
 
@@ -145,9 +150,10 @@ class BasicController extends \BaseController {
 		$pwd = Request::get('password');
 		$qry = "select doctor_name from doctor where mail = '$mail' and password='$pwd'";
 		$data =DB::select($qry);
-// return $qry;
+
 		if($data==null)
 		{
+
 			return Response::json([
 					'message' => 'Incorrect email/password.',
 					'status_code' => 401
