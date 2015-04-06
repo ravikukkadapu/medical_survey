@@ -67,7 +67,7 @@ function validate()
 <body style=' border :0; background:rgb(239,239,229)  '>
 <center style=' background:rgb(12,96,112)'>
 <br>
-<h1>MEDICAL SURVEY</h1>
+<h1><font color="white">MEDICAL SURVEY</font></h1>
 <br>
 </center>
 <form action ="{{URL::route('doc_register')}}" method='post' onsubmit ="return validate()" style=' border :0;  '>
