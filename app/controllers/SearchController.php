@@ -684,7 +684,7 @@ else
     // return $query;
 
     $result = DB::select($query);
-    return $result;
+    // return $result;
     if($result == null)
     {
         return Response::json([
