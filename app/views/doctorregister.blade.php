@@ -71,14 +71,14 @@ function validate()
 <TABLE  CELLPADDING=4>
   <TR>
     <TH ROWSPAN=3 >
-      <img src='/images/medical.jpg' alt="medical" height="50" width="50">
+      <img src='/images/medical.jpg' alt="medical" height="72" width="72">
     </TH>
     <TD></TD>
   </TR>
 
   <TR>
 <td>
-<FONT COLOR=white face="verdana" SIZE=8 >MEDICAL SURVEY</FONT>
+<FONT COLOR=white face="verdana" SIZE=7 >MEDICAL SURVEY</FONT>
 </td>
 </TR>
 <TR>
