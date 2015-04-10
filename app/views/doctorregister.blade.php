@@ -65,59 +65,86 @@ function validate()
 </script>
 </head>
 <body style=' border :0; background:rgb(239,239,229)  '>
-<center style=' background:rgb(12,96,112)'>
-<br>
-<h1><font color="white">MEDICAL SURVEY</font></h1>
-<br>
+<center>
+<div style=' border :2; border-style: solid; border-color: rgb(12,96,112); background:rgb(16,165,192) ;align='center';'>
+
+<TABLE  CELLPADDING=4>
+  <TR>
+    <TH ROWSPAN=3 >
+      <img src='/images/logo.png' alt="logo" height="72" width="72">
+    </TH>
+    <TD></TD>
+  </TR>
+
+  <TR>
+<td>
+<FONT COLOR=white face="verdana" SIZE=8 >MEDICAL SURVEY</FONT>
+</td>
+</TR>
+<TR>
+<TD></TD>
+</TR>
+</TABLE>
+
+</div>
 </center>
-<form action ="{{URL::route('doc_register')}}" method='post' onsubmit ="return validate()" style=' border :0;  '>
+<form action ="{{URL::route('doc_register')}}" method='post' onsubmit ="return validate()">
 {{-- <form> --}}
 <br>
 <fieldset style=' border :0; '>
 
-<legend ALIGN = 'CENTER'> DOCTOR REGISTRATION</legend>
+<legend ALIGN = 'CENTER'><h2> DOCTOR REGISTRATION</h2></legend>
 <BR>
     <table align='center' >
     <tr>
-        <td>DOCTOR NAME:</td>
+        <td><b>DOCTOR NAME:</b></td>
         <td></td>
         <td><input type="text" name="doctor_name" id="doctor_name" placeholder=" Doctor Name"></td>
     </tr>
+    <tr><td></td></tr>
     <tr>
-        <td>MAIL:</td>
+        <td><b>MAIL:</b></td>
         <td></td>
         <td><input type="text" name="mail" id="mail" placeholder=" Mail"></td>
     </tr>
+    <tr><td></td></tr>
     <tr>
-        <td>PASSWORD:</td>
+        <td><b>PASSWORD:</b></td>
         <td></td>
-        <td><input type="password" name="password" id="password" placeholder=" password"></td>
+        <td><input type="password" name="password" id="password" placeholder=" Password"></td>
     </tr>
+    <tr><td></td></tr>
     <tr>
-        <td>CONFIRM PASSWORD:</td>
+        <td><b>CONFIRM PASSWORD:</b></td>
         <td></td>
         <td><input type="password" name="confirm_password" id="confirm_password" placeholder=" Confrim password"></td>
     </tr>
+    <tr><td></td></tr>
     <tr>
-        <td>MOBILE:</td>
+        <td><b>MOBILE:</b></td>
         <td></td>
         <td><input type="text" name="doctor_mobile" id="doctor_mobile" maxlength = '10' placeholder=" Mobile No"></td>
     </tr>
+    <tr><td></td></tr>
     <tr>
-        <td>SPECIALIZATION:</td>
+        <td><b>SPECIALIZATION:</b></td>
         <td></td>
         <td><input type="text" name="specialization" id="specialization" placeholder=" Specialization of Doctor"></td>
     </tr>
+    <tr><td></td></tr>
     <tr>
-        <td>ADDRESS:</td>
+        <td><b>ADDRESS:</b></td>
         <td></td>
         <td><input type="text" name="address" id="address" placeholder=" Address"></td>
     </tr>
+    <tr><td></td></tr>
     <tr>
         <td></td>
-        <td><BR><button class="button postfix login-btn"> Register </button></td>
+        <td><BR><input type ='submit' value ='REGISTER' name='submit' style="background-color:black; font-weight:bold; font-family:verdana; font-size:100%; color:white; width :110px ; height:30px border :2; border-style: solid; border-color: black;">
+        {{-- <button class="button postfix login-btn"> Register </button></td> --}}
         <td></td>
     </tr>
+
 </table>
 </fieldset>
 </form>
