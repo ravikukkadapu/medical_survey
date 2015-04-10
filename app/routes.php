@@ -44,3 +44,4 @@ Route::post('/medical/patientlogout','BasicController@patientlogout');
 Route::post('/medical/doctorlogout','BasicController@doctorlogout');
 
 // Route::get('/medical/dataview','HomeController@view');
+
