@@ -71,7 +71,7 @@ function validate()
 <TABLE  CELLPADDING=4>
   <TR>
     <TH ROWSPAN=3 >
-      <img src='/images/logo.png' alt="logo" height="72" width="72">
+      <img src='/images/medical.png' alt="logo" height="72" width="72">
     </TH>
     <TD></TD>
   </TR>
