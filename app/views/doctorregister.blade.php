@@ -7,7 +7,8 @@ function validate()
     var dname = document.getElementById('doctor_name').value;
     var dspecialization = document.getElementById('specialization').value;
     var daddress = document.getElementById('address').value;
-
+    var password = document.getElementById('password').value;
+    var cpassword = document.getElementById('confirm_password').value;
     if(document.getElementById('doctor_name').value=="")
     {
         alert("Please Enter the Doctor-Name");
@@ -36,6 +37,25 @@ function validate()
         document.getElementById('password').focus();
         return false
     }
+    else if(!password.match(/^.{6,10}$/))
+    {
+        alert("password must be between 6-10 characters");
+        document.getElementById('password').focus();
+        return false
+    }
+
+    if(document.getElementById('confirm_password').value=="")
+    {
+        alert("Please Enter confirm password");
+        document.getElementById('confirm_password').focus();
+        return false
+    }
+    else if(!cpassword.match(/^.{6,10}$/))
+    {
+        alert("password must be between 6-10 characters");
+        document.getElementById('password').focus();
+        return false
+    }
 
     if(document.getElementById('doctor_mobile').value=="")
     {
@@ -43,18 +63,14 @@ function validate()
         document.getElementById('doctor_mobile').focus();
         return false
     }
+
     else if(isNaN(document.getElementById('doctor_mobile').value))
     {
         alert("Please Enter only numbers for mobileno");
         document.getElementById('doctor_mobile').focus();
         return false
     }
-    if(document.getElementById('confirm_password').value=="")
-    {
-        alert("Please Enter confirm password");
-        document.getElementById('confirm_password').focus();
-        return false
-    }
+
     if(document.getElementById('specialization').value=="")
     {
         alert("Please Enter specialization");
@@ -110,43 +126,43 @@ function validate()
     <tr>
         <td><b>DOCTOR NAME:</b></td>
         <td></td>
-        <td><input type="text" name="doctor_name" id="doctor_name" placeholder=" Doctor Name"></td>
+        <td><input type="text" name="doctor_name" id="doctor_name" placeholder=" Doctor Name" style ='height:30px' value = "{{Input::old('doctor_name')}}"></td>
     </tr>
     <tr><td></td></tr>
     <tr>
         <td><b>MAIL:</b></td>
         <td></td>
-        <td><input type="text" name="mail" id="mail" placeholder=" Mail"></td>
+        <td><input type="text" name="mail" id="mail" placeholder=" Mail" style ='height:30px' value = "{{Input::old('mail')}}"></td>
     </tr>
     <tr><td></td></tr>
     <tr>
         <td><b>PASSWORD:</b></td>
         <td></td>
-        <td><input type="password" name="password" id="password" placeholder=" Password"></td>
+        <td><input type="password" name="password" id="password" placeholder=" Password" style ='height:30px' ></td>
     </tr>
     <tr><td></td></tr>
     <tr>
         <td><b>CONFIRM PASSWORD:</b></td>
         <td></td>
-        <td><input type="password" name="confirm_password" id="confirm_password" placeholder=" Confrim password"></td>
+        <td><input type="password" name="confirm_password" id="confirm_password" placeholder=" Confrim password" style ='height:30px'></td>
     </tr>
     <tr><td></td></tr>
     <tr>
         <td><b>MOBILE:</b></td>
         <td></td>
-        <td><input type="text" name="doctor_mobile" id="doctor_mobile" maxlength = '10' placeholder=" Mobile No"></td>
+        <td><input type="text" name="doctor_mobile" id="doctor_mobile" maxlength = '10' placeholder=" Mobile No" style ='height:30px' value = "{{Input::old('doctor_mobile')}}"></td>
     </tr>
     <tr><td></td></tr>
     <tr>
         <td><b>SPECIALIZATION:</b></td>
         <td></td>
-        <td><input type="text" name="specialization" id="specialization" placeholder=" Specialization of Doctor"></td>
+        <td><input type="text" name="specialization" id="specialization" placeholder=" Specialization of Doctor" style ='height:30px' value = "{{Input::old('specialization')}}"></td>
     </tr>
     <tr><td></td></tr>
     <tr>
         <td><b>ADDRESS:</b></td>
         <td></td>
-        <td><input type="text" name="address" id="address" placeholder=" Address"></td>
+        <td><input type="text" name="address" id="address" placeholder=" Address" style ='height:30px' value = "{{Input::old('address')}}"></td>
     </tr>
     <tr><td></td></tr>
     <tr>

@@ -34,7 +34,8 @@ class BasicController extends \BaseController {
         if($validator->fails())
         {
             echo "<script>alert('Mail id entered already exists');</script>";
-            return View::make('doctorregister');
+            // return View::make('doctorregister');
+            return Redirect::back()->withInput();
             // return Response::json([
                     // 'message' => 'Mail id entered already exists',
                     // 'status_code' => 401
@@ -45,7 +46,8 @@ class BasicController extends \BaseController {
             if($pwd !=$cpwd)
             {
             echo "<script>alert('password mismatch');</script>";
-            return View::make('doctorregister');
+            // return View::make('doctorregister');
+            return Redirect::back()->withInput();
             // return Response::json([
             //         'message' => 'password mismatch',
             //         'status_code' => 402
