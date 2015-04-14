@@ -1,7 +1,8 @@
 <?php
 
-class DiagnosticsController extends \BaseController {
-
+class DiagnosticsController extends \BaseController
+{
+	//--storing diagnostics data into database
 
 	public function store()
 	{
@@ -28,7 +29,6 @@ class DiagnosticsController extends \BaseController {
 		{
 			$address = $data->results[0]->formatted_address;
     	}
-		// return $address;
 
 		if($bpvalue ==null)
 		{
@@ -41,7 +41,6 @@ class DiagnosticsController extends \BaseController {
 			$bpsystolicvalue = $val[0];
 			$bpdiastolicvalue = $val[1];
 		}
-
 		$dia = new Diagnostics;
 		$dia->patient_code = $patientcode;
 		$dia->heartbeat_value = $heartbeatvalue;
@@ -64,7 +63,6 @@ class DiagnosticsController extends \BaseController {
 				'status_code' => 200
 			],200);
 	}
-
 
 
 }

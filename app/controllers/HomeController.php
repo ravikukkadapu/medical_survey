@@ -20,11 +20,16 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
-	// public function view()
-	// {
-	// 	$qry = "select * from vw_searchdaily";
-	// 	$res = DB::select($qry);
-	// 	return View::make('dataview',['data'=>$res]);
-	// }
+	public function store()
+	{
+
+$d1=strtotime("July 04");
+
+$d2=ceil(($d1-time())/60/60/24/30);
+return $d2;
+echo "There are " . $d2 ." days until 4th of July.";
+
+	}
+
 
 }

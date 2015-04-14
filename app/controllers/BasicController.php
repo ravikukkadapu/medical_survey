@@ -7,10 +7,14 @@ class BasicController extends \BaseController {
 	// 	return View::make('register');
 	// }
 
+//--view code for doctor registration page.
+
 	public function doctor()
 	{
 		return View::make('doctorregister');
 	}
+
+//--saving doctor details into db from doctor registration page.
 
 	Public function doctorsave()
 	{
@@ -67,8 +71,9 @@ class BasicController extends \BaseController {
             // ],200);
         }
 
-
 	}
+
+//--saving patient details into db from patient registration page.
 
 	public function patientsave()
 	{
@@ -118,6 +123,8 @@ class BasicController extends \BaseController {
 
 	}
 
+//--login for patient.
+
 	public function patientlogin()
 	{
 	    $userdata = array(
@@ -144,6 +151,8 @@ class BasicController extends \BaseController {
     }
 }
 
+//--login for doctor.
+
 	public function doctorlogin()
 	{
 		$mail = Request::get('mail');
@@ -169,6 +178,8 @@ class BasicController extends \BaseController {
 		}
 	}
 
+//--logout for patient page.
+
     public function patientlogout()
     {
         // Auth::logout();
@@ -177,6 +188,8 @@ class BasicController extends \BaseController {
                 'status_code' => 200
         ],200);
     }
+
+//--logout for doctor page.
 
     public function doctorlogout()
     {
