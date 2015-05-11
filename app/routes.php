@@ -1,6 +1,54 @@
 <?php
 
 // Route::get('/medical/register','BasicController@patient');
+
+//requesting new password
+
+// Route::get('/medical/reset',
+//     [
+//     'as' => 'password_remind',
+//   'uses' => 'HomeController@remind',
+// ]
+// );
+
+// //--sending link for  password change for patient
+
+// Route::post('/medical/reset',
+//   [
+//   'uses' => 'HomeController@request',
+//   'as' => 'password_request'
+//   ]
+// );
+
+//
+
+Route::post('/medical/patient/reset',
+[
+        'as' => 'patient_request',
+        'uses' =>'HomeController@patientrequest'
+]);
+
+Route::post('/medical/doctor/reset',
+[
+        'as' => 'doctor_request',
+        'uses' =>'HomeController@doctorrequest'
+]);
+
+
+Route::get('medical/patient/reset/{token}', array(
+  'uses' => 'HomeController@patientreset',
+  'as' => 'patient_reset'
+));
+
+//--password change
+
+Route::post('medical/patient/reset/{token}', array(
+  'uses' => 'HomeController@patientupdate',
+  'as' => 'patient_update'
+));
+
+
+
 //--registers the patient data.
 
 Route::post('/medical/register',
@@ -67,8 +115,6 @@ Route::post('/medical/patientlogout','BasicController@patientlogout');
 
 Route::post('/medical/doctorlogout','BasicController@doctorlogout');
 
-// Route::get('/medical/dataview','HomeController@view');
 
 
 
-Route::get('/medical/sample','HomeController@store');

@@ -107,7 +107,7 @@ class BasicController extends \BaseController {
 		{
 			$pat = new Patient;
 			$pat->patient_code = $pcode;
-			$pat->patient_mail = $pmail;
+			$pat->email = $pmail;
 			$pat->patient_mobile = $pmobile;
 			$pat->password = $ppwd;
 			$pat->surveytype = $surveytype;
@@ -130,11 +130,11 @@ class BasicController extends \BaseController {
 	public function patientlogin()
 	{
 	    $userdata = array(
-                'patient_mail' => Request::get('patient_mail'),
+                'email' => Request::get('patient_mail'),
                 'password' => Request::get('patient_password')
                 );
 	    $code = Request::get('patient_mail');
-	    $qry = "select patient_code from users where patient_mail = '$code'";
+	    $qry = "select patient_code from users where email = '$code'";
 	    $data =DB::select($qry);
     if(Auth::attempt($userdata))
     {

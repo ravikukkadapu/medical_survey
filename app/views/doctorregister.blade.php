@@ -138,7 +138,7 @@ function validate()
     <tr>
         <td><b>PASSWORD:</b></td>
         <td></td>
-        <td><input type="password" name="password" id="password" placeholder=" Password" style ='height:30px' ></td>
+        <td><input type="password" name="password" id="password" placeholder=" Password" style ='height:30px; size:10' ></td>
     </tr>
     <tr><td></td></tr>
     <tr>
