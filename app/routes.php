@@ -116,5 +116,5 @@ Route::post('/medical/patientlogout','BasicController@patientlogout');
 Route::post('/medical/doctorlogout','BasicController@doctorlogout');
 
 
-
+Route::post('sample','SampleController@sample');
 

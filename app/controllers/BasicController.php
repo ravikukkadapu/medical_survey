@@ -94,10 +94,10 @@ class BasicController extends \BaseController {
     	'patient_mail'=> 'required|email|unique:users',
 		);
 
-		$validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Input::all(), $rules);
 
-		if($validator->fails())
-		{
+        if($validator->fails())
+        {
 			return Response::json([
 					'message' => 'Mail id entered already exists',
 					'status_code' => 401
@@ -107,7 +107,7 @@ class BasicController extends \BaseController {
 		{
 			$pat = new Patient;
 			$pat->patient_code = $pcode;
-			$pat->email = $pmail;
+			$pat->patient_mail = $pmail;
 			$pat->patient_mobile = $pmobile;
 			$pat->password = $ppwd;
 			$pat->surveytype = $surveytype;
