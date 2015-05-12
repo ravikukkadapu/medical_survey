@@ -82,7 +82,7 @@ class BasicController extends \BaseController {
 		$pcode = Request::get('patient_code');
 		$pmail = Request::get('patient_mail');
 		$pmobile = Request::get('patient_mobile');
-		$ppwd = Hash::make(Request::get('patient_password'));
+		$ppwd = md5(Request::get('patient_password'));
 		$surveytype = Request::get('surveytype');
 		$address = Request::get('address');
 		$zipcode = Request::get('zipcode');
@@ -129,29 +129,25 @@ class BasicController extends \BaseController {
 
 	public function patientlogin()
 	{
-	    $userdata = array(
-                'email' => Request::get('patient_mail'),
-                'password' => Request::get('patient_password')
-                );
-	    $code = Request::get('patient_mail');
-	    $qry = "select patient_code from users where email = '$code'";
+        $email = Request::get('patient_mail');
+        $password = md5(Request::get('patient_password'));
+	    $qry = "select patient_code from users where patient_mail = '$email' and password = '$password'";
 	    $data =DB::select($qry);
-    if(Auth::attempt($userdata))
-    {
-		return Response::json([
-				'status_code' => 200,
-				'patient_code' =>$data
-		],200);
+        if($data==null)
+        {
+            return Response::json([
+                'message' => 'Incorrect email/password.',
+                'status_code' => 401
+                ],401);
+        }
+        else
+        {
+            return Response::json([
+                'status_code' => 200,
+                'patient_code' =>$data
+            ],200);
+        }
     }
-    else
-    {
-    	return Response::json([
-				'message' => 'Incorrect email/password.',
-				'status_code' => 401
-
-		],401);
-    }
-}
 
 //--login for doctor.
 
